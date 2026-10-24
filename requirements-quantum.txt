@@ -1,0 +1,4 @@
+# Optional dependencies for the Qiskit Aer circuit-simulation bridge.
+# Install after requirements.txt if you want the circuit endpoint enabled.
+qiskit>=1.2,<3
+qiskit-aer>=0.15,<1

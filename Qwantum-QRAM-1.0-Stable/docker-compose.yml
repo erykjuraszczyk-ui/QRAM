@@ -1,0 +1,14 @@
+services:
+  qwantum-qram:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      QRAM_CAPACITY: "${QRAM_CAPACITY:-1024}"
+      QRAM_MAX_DEMO_QUBITS: "${QRAM_MAX_DEMO_QUBITS:-12}"
+      QRAM_DATABASE_PATH: "/app/data/qram.db"
+      QRAM_API_KEY: "${QRAM_API_KEY:-}"
+      QRAM_RATE_LIMIT: "${QRAM_RATE_LIMIT:-120}"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

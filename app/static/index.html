@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f"><title>Qwantum QRAM 1.0 Stable</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="topbar"><div class="brand-mark">Q</div><div><h1>Qwantum QRAM <span>1.0 Stable</span></h1><p>Persistent memory · revision history</p></div><div id="health" class="status">Łączenie…</div></header>
+<main>
+<section class="panel security-panel"><div class="section-head"><div><p class="eyebrow">ACCESS CONTROL</p><h2>Klucz API</h2></div><span id="auth-mode" class="muted">Sprawdzanie ochrony…</span></div><p class="muted">Jeżeli serwer ma ustawione <code>QRAM_API_KEY</code>, wklej klucz tutaj. Zostanie zapamiętany tylko w tej sesji przeglądarki.</p><div class="inline-form"><label for="api-key-input">X-API-Key</label><input id="api-key-input" type="password" autocomplete="off" placeholder="Klucz API (opcjonalnie)"><button id="save-api-key" type="button">Zastosuj klucz</button><button id="clear-api-key" type="button" class="secondary">Wyczyść</button></div><div id="api-key-result" class="result" aria-live="polite"></div></section>
+<section class="hero panel"><div><p class="eyebrow">MEMORY CORE / 01</p><h2>Pamięć, która przetrwa restart.</h2><p>QRAM 0.6 dodaje trwały zapis SQLite, historię rewizji komórek oraz klasyczny silnik adresowalny. To symulator programowy, nie fizyczna pamięć kwantowa.</p></div><div class="orb" aria-hidden="true"><div></div></div></section>
+<section class="metrics"><article class="metric panel"><span>Pojemność</span><strong id="capacity">—</strong></article><article class="metric panel"><span>Zajęte komórki</span><strong id="used">—</strong></article><article class="metric panel"><span>Wolne komórki</span><strong id="free">—</strong></article></section>
+<section class="grid">
+<article class="panel"><p class="eyebrow">WRITE BUS / 02</p><h2>Zapis danych</h2><form id="write-form"><label for="write-address">Adres</label><input id="write-address" type="number" min="0" value="0" required><label for="write-value">Wartość</label><input id="write-value" type="text" maxlength="4096" placeholder="np. rekord-alpha" required><button type="submit">Zapisz rewizję</button></form><div id="write-result" class="result" aria-live="polite"></div></article>
+<article class="panel"><p class="eyebrow">READOUT / 03</p><h2>Odczyt i historia</h2><form id="read-form"><label for="read-address">Adres</label><input id="read-address" type="number" min="0" value="0" required><button type="submit">Odczytaj adres</button></form><div id="read-result" class="result" aria-live="polite"></div><div class="history-controls"><label for="history-address">Adres historii</label><input id="history-address" type="number" min="0" value="0"><button id="history-button" class="secondary">Pokaż historię</button></div><pre id="history-result" class="result code">Wybierz adres, aby wyświetlić historię.</pre></article>
+</section>
+<section class="panel"><div class="section-head"><div><p class="eyebrow">DATA REGISTER / 04</p><h2>Komórki pamięci</h2></div><button id="refresh" class="secondary">Odśwież</button></div><div class="table-wrap"><table><thead><tr><th>Adres</th><th>Wartość</th><th>Rewizja</th><th>Aktualizacja (UTC)</th></tr></thead><tbody id="cells"><tr><td colspan="4">Ładowanie…</td></tr></tbody></table></div><button id="reset" class="danger">Wyczyść aktywne komórki</button><p class="muted">Historia rewizji pozostaje w bazie również po wyczyszczeniu aktywnej pamięci.</p></section>
+<section class="panel">
+<p class="eyebrow">QUANTUM BRIDGE / 05</p><h2>Qiskit Aer — obwód kwantowy</h2>
+<p class="muted">Opcjonalny adapter uruchamia mały obwód Hadamarda w lokalnym symulatorze. Jeśli zależności nie są zainstalowane, panel pokaże instrukcję.</p>
+<div id="backend-status" class="result">Sprawdzanie backendu…</div>
+<form id="circuit-form" class="inline-form"><label for="circuit-qubits">Kubity (1–12)</label><input id="circuit-qubits" type="number" min="1" max="12" value="2" required><label for="circuit-shots">Pomiary (shots)</label><input id="circuit-shots" type="number" min="1" max="100000" value="1024" required><button type="submit">Uruchom obwód</button></form>
+<pre id="circuit-result" class="result code">Brak uruchomionego obwodu.</pre></section>
+<section class="panel"><p class="eyebrow">STATE LAB / 06</p><h2>Demonstracja superpozycji</h2><p class="muted">Mały model state-vector; liczba stanów rośnie wykładniczo.</p><form id="quantum-form" class="inline-form"><label for="qubits">Liczba kubitów (1–12)</label><input id="qubits" type="number" min="1" max="12" value="2" required><button type="submit">Uruchom demonstrację</button></form><pre id="quantum-result" class="result code">Brak uruchomionego testu.</pre></section>
+<footer>Qwantum QRAM 1.0 Stable · SQLite persistence · Prototyp edukacyjny</footer>
+</main><script src="/static/app.js"></script></body></html>
